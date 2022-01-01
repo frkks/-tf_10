@@ -1,0 +1,211 @@
+SELECT first_name, last_name, field
+FROM student_info
+where field LIKE 'Da%'
+order by first_name desc;
+
+
+SELECT last_name FROM student_info where last_name LIKE '%er%';
+
+
+SELECT first_name
+FROM student_info
+WHERE first_name LIKE 'E_ic';
+
+
+SELECT COUNT(first_name) 
+FROM student_info;
+
+COUNT(*). 
+
+SELECT column_name AS alias_name
+SELECT COUNT(first_name) AS count_of_students
+FROM student_info;
+
+SELECT COUNT(DISTINCT field) AS count_of_field
+FROM student_info;
+
+SELECT COUNT(*) AS count_of_students
+FROM student_info
+WHERE state = 'Virginia'
+
+SELECT MIN(column_name)
+FROM table_name;
+
+SELECT MIN(salary) AS lowest_salary
+FROM employees;
+
+SELECT MIN(salary) AS lowest_salary
+FROM employees
+WHERE gender = 'Female';
+
+SELECT salary AS lowest_salary
+FROM employees
+WHERE gender = 'Female'
+ORDER BY salary
+LIMIT 1;
+
+SELECT MIN(hire_date) AS earliest_date
+FROM employees;
+
+SELECT MAX(column_name)
+FROM table_name;
+
+SELECT MAX(salary) AS highest_salary
+FROM employees;
+
+SELECT MAX(salary) AS highest_salary
+FROM employees;
+
+SELECT salary AS highest_salary
+FROM employees
+WHERE gender = 'Male'
+ORDER BY salary DESC
+LIMIT 1;
+
+SELECT start_date
+FROM student_info
+WHERE gender = 'F'
+ORDER BY start_date DESC
+LIMIT 1;
+
+SELECT SUM(salary) AS total_salary
+FROM employees;
+
+SELECT SUM(salary) AS total_salary
+FROM employees
+WHERE gender = 'Female'
+
+SELECT AVG(column_name)
+FROM table_name;
+
+SELECT AVG(salary) AS average_salary
+FROM employees;
+
+SELECT AVG(salary) AS average_salary
+FROM employees
+WHERE gender = 'Male';
+
+SELECT column_1, aggregate_function(column_2)
+FROM table_name
+GROUP BY column_1;
+
+SELECT gender, COUNT(gender)
+FROM employees
+GROUP BY gender;
+
+SELECT gender, COUNT(job_title)
+FROM employees
+WHERE job_title = 'Data Scientist'
+GROUP BY gender;
+
+SELECT gender, MIN(salary) AS min_salary
+FROM employees
+GROUP BY gender;
+
+SELECT gender, MAX(salary) AS max_salary
+FROM employees
+GROUP BY gender;
+
+SELECT gender,
+MAX(salary) AS max_salary
+FROM employees
+GROUP BY gender
+ORDER BY max_salary DESC;
+
+SELECT gender, SUM(salary) AS total_salary
+FROM employees
+GROUP BY gender;
+
+SELECT gender, AVG(salary) AS average_salary
+FROM employees
+GROUP BY gender;
+
+SELECT gender,
+SUM(salary) AS total_salary
+FROM employees
+GROUP BY gender
+ORDER BY total_salary DESC;
+
+SELECT columns
+  FROM table_A
+  INNER JOIN table_B ON join_conditions;
+
+SELECT columns
+  FROM table_A
+  INNER JOIN table_B 
+    ON join_conditions1 AND join_conditions2
+  INNER JOIN table_C
+    ON join_conditions3 OR join_conditions4;
+
+SELECT
+    employees.emp_id,
+    employees.first_name,
+    employees.last_name,
+    departments.dept_name,
+    departments.dept_id
+  FROM employees
+  INNER JOIN departments
+    ON employees.emp_id = departments.emp_id;
+
+SELECT
+    employees.emp_id,
+    employees.first_name,
+    employees.last_name,
+    departments.dept_name,
+    departments.dept_id
+  FROM employees
+  INNER JOIN departments
+    ON employees.emp_id = departments.emp_id;
+
+SELECT columns
+  FROM table_A
+  LEFT JOIN table_B ON join_conditions;
+
+SELECT columns
+  FROM table_A
+  LEFT OUTER JOIN table_B ON join_conditions;
+
+SELECT
+    employees.emp_id,
+    employees.first_name,
+    employees.last_name,
+    departments.dept_name,
+    departments.dept_id
+  FROM employees
+  LEFT JOIN departments
+    ON employees.emp_id = departments.emp_id;
+
+
+
+
+--     1   ---
+
+SELECT InvoiceId, CustomerId, total 
+FROM invoices
+ORDER by CustomerId ASC, total DESC;
+
+--     2   ---
+
+SELECT InvoiceId, CustomerId, total 
+FROM invoices
+ORDER by  total DESC, CustomerId ASC;
+
+--     3   ---
+
+/*===================================================
+	ilk sorguda önce CustomerId sıralamasını artan olarak yaptı ve 
+	CustomerId ler kendi arasında total toplamrı azalan 
+	sırasıyls sıraladı.
+====================================================*/
+
+--     4   ---
+
+SELECT * 
+FROM invoices
+WHERE total >= 10
+LIMIT 10;
+
+--     5   ---
+SELECT * 
+FROM invoices
+LIMIT 5;
